@@ -2935,6 +2935,9 @@ class ServerVBox(gtk.VBox):
                     if i == "Recheck" and self.miserable_service\
                             and server.hosts[self.miserable_host].services[self.miserable_service].is_passive_only():
                             pass
+                    # Desactivate Downtime for Centreon because this functionnality is not working
+                    elif i == "Downtime" and self.server.TYPE == "Centreon":
+                    	    pass
                     else:
                         menu_item = gtk.MenuItem(i)
                         menu_item.connect("activate", self.TreeviewPopupMenuResponse, i)
