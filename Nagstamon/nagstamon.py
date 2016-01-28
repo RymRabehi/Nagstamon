@@ -155,9 +155,9 @@ if conf.unconfigured == True:
     GUI.Settings(servers=servers, output=output, conf=conf)
 
 # if checking for new version is set check now
-if str(conf.check_for_new_version) == "True":
-    check = Actions.CheckForNewVersion(servers=servers, output=output, mode="startup")
-    check.start()
+#if str(conf.check_for_new_version) == "True":
+#    check = Actions.CheckForNewVersion(servers=servers, output=output, mode="startup")
+#    check.start()
 
 try:
     # Gtk Main Loop
