@@ -35,7 +35,7 @@ class Config(object):
             supposed to be sensible defaults
         """
         # move from minute interval to seconds
-        self.update_interval_seconds = 60
+        self.update_interval_seconds = 120
         self.short_display = False
         self.long_display = True
         self.show_grid = True
@@ -50,14 +50,14 @@ class Config(object):
         self.filter_all_warning_services = False
         self.filter_all_critical_services = False
         self.filter_all_flapping_services = False
-        self.filter_acknowledged_hosts_services = False
+        self.filter_acknowledged_hosts_services = True
         self.filter_hosts_services_disabled_notifications = False
         self.filter_hosts_services_disabled_checks = False
-        self.filter_hosts_services_maintenance = False
-        self.filter_services_on_acknowledged_hosts = False
-        self.filter_services_on_down_hosts = False
-        self.filter_services_on_hosts_in_maintenance = False
-        self.filter_services_on_unreachable_hosts = False
+        self.filter_hosts_services_maintenance = True
+        self.filter_services_on_acknowledged_hosts = True
+        self.filter_services_on_down_hosts = True
+        self.filter_services_on_hosts_in_maintenance = True
+        self.filter_services_on_unreachable_hosts = True
         self.filter_hosts_in_soft_state = False
         self.filter_services_in_soft_state = False
         self.position_x = 30
@@ -77,7 +77,7 @@ class Config(object):
         self.notification_flashing = True
         self.notification_desktop = False
         self.notification_actions = False
-        self.notification_sound = True
+        self.notification_sound = False
         self.notification_sound_repeat = False
         self.notification_default_sound = True
         self.notification_custom_sound = False
@@ -225,7 +225,7 @@ class Config(object):
                         object.__setattr__(self, i[0], BOOLPOOL[i[1]])
                     else:
                         object.__setattr__(self, i[0], i[1])
-                        
+
             # because the switch from Nagstamon 1.0 to 1.0.1 brings the use_system_keyring property
             # and all the thousands 1.0 installations do not know it yet it will be more comfortable
             # for most of the Windows users if it is only defined as False after it was checked
