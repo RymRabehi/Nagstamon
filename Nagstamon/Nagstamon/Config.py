@@ -35,7 +35,7 @@ class Config(object):
             supposed to be sensible defaults
         """
         # move from minute interval to seconds
-        self.update_interval_seconds = 60
+        self.update_interval_seconds = 120
         self.short_display = False
         self.long_display = True
         self.show_grid = True
@@ -50,14 +50,14 @@ class Config(object):
         self.filter_all_warning_services = False
         self.filter_all_critical_services = False
         self.filter_all_flapping_services = False
-        self.filter_acknowledged_hosts_services = False
+        self.filter_acknowledged_hosts_services = True
         self.filter_hosts_services_disabled_notifications = False
         self.filter_hosts_services_disabled_checks = False
-        self.filter_hosts_services_maintenance = False
-        self.filter_services_on_acknowledged_hosts = False
-        self.filter_services_on_down_hosts = False
-        self.filter_services_on_hosts_in_maintenance = False
-        self.filter_services_on_unreachable_hosts = False
+        self.filter_hosts_services_maintenance = True
+        self.filter_services_on_acknowledged_hosts = True
+        self.filter_services_on_down_hosts = True
+        self.filter_services_on_hosts_in_maintenance = True
+        self.filter_services_on_unreachable_hosts = True
         self.filter_hosts_in_soft_state = False
         self.filter_services_in_soft_state = False
         self.position_x = 30
@@ -77,7 +77,7 @@ class Config(object):
         self.notification_flashing = True
         self.notification_desktop = False
         self.notification_actions = False
-        self.notification_sound = True
+        self.notification_sound = False
         self.notification_sound_repeat = False
         self.notification_default_sound = True
         self.notification_custom_sound = False
@@ -117,18 +117,18 @@ class Config(object):
         self.re_status_information_pattern = ""
         self.re_status_information_reverse = False
         self.color_ok_text = self.default_color_ok_text = "#FFFFFF"
-        self.color_ok_background = self.default_color_ok_background = "#006400"
+        self.color_ok_background = self.default_color_ok_background = "#88B917"
         self.color_warning_text = self.default_color_warning_text = "#000000"
-        self.color_warning_background = self.default_color_warning_background = "#FFFF00"
+        self.color_warning_background = self.default_color_warning_background = "#FFD546"
         self.color_critical_text = self.default_color_critical_text = "#FFFFFF"
-        self.color_critical_background = self.default_color_critical_background = "#FF0000"
+        self.color_critical_background = self.default_color_critical_background = "#E00B3D"
         self.color_unknown_text = self.default_color_unknown_text = "#000000"
-        self.color_unknown_background = self.default_color_unknown_background = "#FFA500"
+        self.color_unknown_background = self.default_color_unknown_background = "#BCBDC0"
         self.color_unreachable_text = self.default_color_unreachable_text = "#FFFFFF"
-        self.color_unreachable_background = self.default_color_unreachable_background = "#8B0000"
+        self.color_unreachable_background = self.default_color_unreachable_background = "#19A5FF"
         self.color_down_text = self.default_color_down_text = "#FFFFFF"
         self.color_down_background = self.default_color_down_background = "#000000"
-        self.color_error_text = self.default_color_error_text= "#000000"
+        self.color_error_text = self.default_color_error_text= "#FF0000"
         self.color_error_background = self.default_color_error_background = "#D3D3D3"
         # going to be obsolete even on Linux
         #self.statusbar_systray = False
@@ -225,7 +225,7 @@ class Config(object):
                         object.__setattr__(self, i[0], BOOLPOOL[i[1]])
                     else:
                         object.__setattr__(self, i[0], i[1])
-                        
+
             # because the switch from Nagstamon 1.0 to 1.0.1 brings the use_system_keyring property
             # and all the thousands 1.0 installations do not know it yet it will be more comfortable
             # for most of the Windows users if it is only defined as False after it was checked

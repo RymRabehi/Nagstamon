@@ -93,7 +93,7 @@ class GUI(object):
 
         # Meta
         self.name = "Nagstamon"
-        self.version = "1.0.1"
+        self.version = "1.0.2-eolas"
         self.website = "https://nagstamon.ifw-dresden.de/"
         self.copyright = "©2008-2014 Henri Wahl et al.\nh.wahl@ifw-dresden.de"
         self.comments = "Nagios status monitor for your desktop"
@@ -3540,8 +3540,8 @@ class Settings(object):
             import traceback
             traceback.print_exc(file=sys.stdout)
 
-        if int(self.conf.update_interval_seconds) <= 0:
-            self.conf.update_interval_seconds = 60
+        if int(self.conf.update_interval_seconds) <= 119:
+            self.conf.update_interval_seconds = 120
 
         # save settings
         self.conf.SaveConfig(output=self.output)
@@ -3694,17 +3694,17 @@ class Settings(object):
         """
             Check for new version of nagstamon - use connection data of configured servers
         """
-        # check if there is already a checking thread
-        for s in self.servers.values():
-            if s.CheckingForNewVersion == True:
-                # if there is already one server used for checking break
-                break
-            else:
-                # start thread which checks for updates
-                self.check = Actions.CheckForNewVersion(servers=self.servers, output=self.output, mode="normal", parent=self)
-                self.check.start()
-                # if one of the servers is not used to check for new version this is enough
-                break
+        # # check if there is already a checking thread
+        # for s in self.servers.values():
+        #     if s.CheckingForNewVersion == True:
+        #         # if there is already one server used for checking break
+        #         break
+        #     else:
+        #         # start thread which checks for updates
+        #         self.check = Actions.CheckForNewVersion(servers=self.servers, output=self.output, mode="normal", parent=self)
+        #         self.check.start()
+        #         # if one of the servers is not used to check for new version this is enough
+        #         break
 
 
     def ToggleDebugOptions(self, widget=None):
