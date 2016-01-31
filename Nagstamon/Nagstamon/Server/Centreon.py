@@ -41,10 +41,14 @@ class CentreonServer(GenericServer):
                     "history": "$MONITOR$/main.php?p=203"}
 
     # A Monitor CGI URL is not necessary so hide it in settings
+    # Password is broken so disable it
     DISABLED_CONTROLS = ["label_monitor_cgi_url",
                          "input_entry_monitor_cgi_url",
                          "input_checkbutton_use_display_name_host",
-                         "input_checkbutton_use_display_name_service"]
+                         "input_checkbutton_use_display_name_service",
+                         "label_password",
+                         "input_entry_password",
+                         "input_checkbutton_save_password"]
 
     # newer Centreon versions (2.3+?) have different URL paths with a "/ndo" fragment
     # will be checked by _get_ndo_url() but default is /xml/ndo/
